@@ -1,0 +1,8 @@
+# Hyades V-asterism, J2000.0 (Hipparcos) -> gnomonic projection, arcmin, centred.
+# Order: epsilon, alpha, theta, delta, gamma Tau.
+star,hip,x_arcmin,y_arcmin
+eps Tau,20889,-27.036,184.938
+alpha Tau,21421,-172.722,-35.804
+theta Tau,NA,-27.723,-86.673
+delta Tau,NA,78.730,46.969
+gamma Tau,20205,148.751,-109.431

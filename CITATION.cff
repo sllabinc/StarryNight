@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+title: "Procrustes shape-matching and null tests for The Starry Night (F612) and benchmark nocturnes"
+authors:
+  - family-names: Kim
+    given-names: Elijah J. H.
+version: 1.0.0
+date-released: 2026-06-10
+license: MIT
+url: "https://github.com/sllabinc/StarryNight"

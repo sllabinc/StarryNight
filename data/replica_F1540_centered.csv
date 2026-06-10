@@ -1,0 +1,8 @@
+# Replica drawing The Starry Night (F1540/JH1732, reed pen, after F612): five central points,
+# centred canvas coordinates (mm). Order matches Hyades: epsilon, alpha, theta, delta, gamma Tau.
+id,star,hip,Xc_mm,Yc_mm
+F2,eps Tau,20889,-143.22,67.93
+F3,alpha Tau,21421,-96.45,-134.98
+F6,theta Tau,NA,25.10,-68.81
+F7,delta Tau,NA,36.32,81.57
+F10,gamma Tau,20205,178.25,54.27

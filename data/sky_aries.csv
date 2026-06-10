@@ -1,0 +1,5 @@
+# Aries, J2000.0 -> gnomonic projection, arcmin, centred. Order: alpha, beta, gamma Ari.
+star,hip,x_arcmin,y_arcmin
+alpha Ari,NA,-279.9172,318.5192
+beta Ari,NA,124.5109,-53.0974
+gamma Ari,NA,155.4061,-265.4218
