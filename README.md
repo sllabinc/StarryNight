@@ -17,16 +17,17 @@ by chance, by an arbitrary choice of points, or by an arbitrary labelling.
 ```
 data/
   F612_measurements.csv        11 central stars of F612, three CAD measurements (mm)
-  F612_mean.csv                their means (analysis input); S8 = Venus
+  F612_mean.csv                their means (analysis input); Sn8 = Venus
   sky_hyades.csv               Hyades V-asterism, J2000.0 gnomonic, arcmin, centred
   sky_aries.csv                Aries (non-diagnostic comparison)
   replica_F1540_centered.csv   replica drawing F1540, five central points, centred (mm)
   benchmark_rhone.csv          Big Dipper benchmark (Rhone, 1888): canvas + sky, k=7
   benchmark_cafe.csv           Summer Triangle benchmark (Cafe, 1888): canvas + sky, k=5
+  benchmark_millet.csv         Winter-asterism transferability fit (Millet, ~1850-65): canvas + sky, k=8
   correspondences.csv          anatomical point-to-star correspondences (F612)
 code/
   procrustes.py                closed-form 2D Procrustes engine + CSV loaders
-  benchmark_fits.py            method-validation fits (Rhone, Cafe) + their MC null
+  benchmark_fits.py            1888 validation (Rhone, Cafe) + Millet transferability fits + their MC null
   montecarlo_null.py           random-placement null test (pillar A)
   permutation_tests.py         label (B1), subset (B2), direction (C) tests
   reproduce_all.py             runs everything and checks the headline numbers
@@ -66,19 +67,23 @@ python reproduce_all.py 1000000    # optional: larger Monte Carlo sample
 
 Expected headline values:
 
+Fits are listed in manuscript order (transferability, then 1888 validation,
+then the Hyades application and its replica, with the reference-only Aries last):
+
 | quantity | value |
 |---|---|
-| F612 Hyades fit (k = 5) | rho_CS = 8.17 %, rho_max = 10.59 %, theta = 46.5°, CS = 472.93 mm |
-| F1540 replica fit (k = 5) | rho_CS = 6.62 %, rho_max = 7.85 %, CS = 317.34 mm |
-| F612 Aries fit (k = 3) | rho_CS = 5.36 % (non-diagnostic, see below) |
+| Millet winter-asterism transferability fit (k = 8) | rho_CS = 3.85 %, rho_max = 7.22 % (Rigel), CS = 497.18 mm |
 | Rhone Big Dipper benchmark (k = 7) | rho_CS = 6.54 % |
 | Cafe Summer Triangle benchmark (k = 5) | rho_CS = 5.46 % |
-| Monte Carlo, F612 Hyades | p ≈ 3 × 10⁻⁵ (null median ≈ 40 %) |
+| F612 Hyades fit (k = 5) | rho_CS = 8.17 %, rho_max = 10.59 %, theta = 46.5°, CS = 472.93 mm |
+| F1540 replica fit (k = 5) | rho_CS = 6.62 %, rho_max = 7.85 %, CS = 317.34 mm |
+| F612 Aries fit (k = 3) | rho_CS = 5.36 % (non-diagnostic / reference-only, see below) |
+| Monte Carlo, Millet / Rhone / Cafe | p < 5 × 10⁻⁶ (0 of 200,000) |
+| Monte Carlo, F612 Hyades | p ≈ 3 × 10⁻⁵ (null median ≈ 40 % at k = 5) |
 | Monte Carlo, F1540 replica | p ≈ 5 × 10⁻⁶ |
-| Monte Carlo, Rhone / Cafe | p < 5 × 10⁻⁶ (0 of 200,000) |
 | Monte Carlo, Aries (k = 3) | p ≈ 0.008 (k = 3 null is permissive: 5th percentile 13.2 % vs 26.8 % at k = 5) |
 | Label permutation (B1) | anatomical labelling ranks 1 / 120, p ≈ 1/120 ≈ 0.008 |
-| Subset enumeration (B2) | {S2,S3,S6,S7,S10} ranks 1 / 462; winner excludes S8 (Venus) |
+| Subset enumeration (B2) | {Sn2,Sn3,Sn6,Sn7,Sn10} ranks 1 / 462; winner excludes Sn8 (Venus) |
 | Direction gate (C) | Hyades first; runner-up 8.85 % is Venus-contaminated |
 
 **Reproducibility of the Monte Carlo p-values.** The random-placement null draws

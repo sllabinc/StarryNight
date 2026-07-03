@@ -4,7 +4,7 @@ title: "Procrustes shape-matching and null tests for The Starry Night (F612) and
 authors:
   - family-names: Kim
     given-names: Elijah J. H.
-version: 1.0.0
-date-released: 2026-06-10
+version: 1.1.0
+date-released: 2026-07-04
 license: MIT
 url: "https://github.com/sllabinc/StarryNight"
