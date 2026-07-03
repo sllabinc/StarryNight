@@ -1,10 +1,10 @@
 # Anatomical (= astronomical) point-to-star correspondences used for each fit.
 fit,canvas_id,sky_file,sky_star
-F612_Hyades,S2,sky_hyades,eps Tau
-F612_Hyades,S3,sky_hyades,alpha Tau
-F612_Hyades,S6,sky_hyades,theta Tau
-F612_Hyades,S7,sky_hyades,delta Tau
-F612_Hyades,S10,sky_hyades,gamma Tau
-F612_Aries,S5,sky_aries,alpha Ari
-F612_Aries,S10,sky_aries,beta Ari
-F612_Aries,S11,sky_aries,gamma Ari
+F612_Hyades,Sn2,sky_hyades,eps Tau
+F612_Hyades,Sn3,sky_hyades,alpha Tau
+F612_Hyades,Sn6,sky_hyades,theta Tau
+F612_Hyades,Sn7,sky_hyades,delta Tau
+F612_Hyades,Sn10,sky_hyades,gamma Tau
+F612_Aries,Sn5,sky_aries,alpha Ari
+F612_Aries,Sn10,sky_aries,beta Ari
+F612_Aries,Sn11,sky_aries,gamma Ari

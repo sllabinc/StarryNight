@@ -4,10 +4,10 @@
 # orientation (declination axis negated) so that rho(canvas, sky) uses proper
 # rotation only (no reflection), matching the Hyades convention.
 star_canvas,sky_star,canvas_x,canvas_y,sky_xi,sky_eta
-R1,eta UMa,236.917,592.820,863.0169,250.2885
-R2,zeta UMa,351.890,625.380,550.4556,-23.9228
-R3,eps UMa,438.047,614.477,285.2957,-40.3557
-R4,delta UMa,507.053,593.673,-37.7216,-87.5009
-R5,gamma UMa,572.670,550.443,-232.9532,102.3953
-R6,alpha UMa,624.700,623.730,-542.9930,-452.5600
-R7,beta UMa,633.500,565.747,-648.7042,-141.2373
+Rh1,eta UMa,236.917,592.820,863.0169,250.2885
+Rh2,zeta UMa,351.890,625.380,550.4556,-23.9228
+Rh3,eps UMa,438.047,614.477,285.2957,-40.3557
+Rh4,delta UMa,507.053,593.673,-37.7216,-87.5009
+Rh5,gamma UMa,572.670,550.443,-232.9532,102.3953
+Rh6,alpha UMa,624.700,623.730,-542.9930,-452.5600
+Rh7,beta UMa,633.500,565.747,-648.7042,-141.2373

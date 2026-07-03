@@ -1,8 +1,8 @@
 # Summer Triangle + beta/delta Cyg benchmark: Cafe Terrace at Night (1888). Five stars.
 # Conventions as in benchmark_rhone.csv (sky_eta image-registered).
 star_canvas,sky_star,canvas_x,canvas_y,sky_xi,sky_eta
-C1,Altair,239.977,804.323,159.7073,1554.2425
-C2,beta Cyg,331.553,742.410,-136.4132,314.1389
-C3,Vega,412.143,648.767,-761.8744,-403.2313
-C4,delta Cyg,448.087,711.107,43.3149,-726.3655
-C5,Deneb,469.227,782.960,658.7692,-798.9796
+Ct1,Altair,239.977,804.323,159.7073,1554.2425
+Ct2,beta Cyg,331.553,742.410,-136.4132,314.1389
+Ct3,Vega,412.143,648.767,-761.8744,-403.2313
+Ct4,delta Cyg,448.087,711.107,43.3149,-726.3655
+Ct5,Deneb,469.227,782.960,658.7692,-798.9796

@@ -1,0 +1,15 @@
+# Winter-asterism transferability fit: Millet, La Nuit etoilee (c.1850-65). Eight stars.
+# Transferability tier (different artist, position-based Procrustes only, no FOV).
+# canvas_*: mean CAD measurement (mm, image frame; centroid at 441.74, 530.87).
+# sky_*: J2000.0 gnomonic projection (arcmin); sky_eta image-registered
+# (declination axis negated) so rho(canvas, sky) uses proper rotation only,
+# matching the benchmark_rhone.csv / benchmark_cafe.csv convention.
+star_canvas,sky_star,canvas_x,canvas_y,sky_xi,sky_eta
+Mi1,delta CMa,106.640,455.489,1090.9000,1203.8900
+Mi2,alpha CMa,219.990,559.699,760.6500,528.3100
+Mi3,kappa Ori,429.180,509.689,-87.4900,79.5000
+Mi4,zeta Ori,519.740,569.859,-194.9800,-385.7400
+Mi5,eps Ori,540.120,574.149,-264.3500,-430.7900
+Mi6,delta Ori,561.310,578.379,-329.1600,-486.0500
+Mi7,eta Ori,572.330,541.679,-442.2500,-357.1600
+Mi8,beta Ori,584.620,458.019,-586.5200,-1.6200

@@ -1,13 +1,13 @@
 # Mean of three measurements (analysis input). Per-coordinate measurement noise approx 0.28 mm.
 star_id,x_mm,y_mm,note
-S1,41.30,397.96,
-S2,99.59,696.11,Hyades epsilon Tau
-S3,123.04,378.45,Hyades alpha Tau
-S4,214.79,704.37,
-S5,219.21,600.65,Aries alpha Ari
-S6,302.16,491.03,Hyades theta Tau
-S7,319.82,699.82,Hyades delta Tau
-S8,330.89,340.01,Venus (bright body)
-S9,379.98,681.08,
-S10,564.21,666.41,Hyades gamma Tau / Aries beta Ari
-S11,654.54,557.94,Aries gamma Ari
+Sn1,41.30,397.96,
+Sn2,99.59,696.11,Hyades epsilon Tau
+Sn3,123.04,378.45,Hyades alpha Tau
+Sn4,214.79,704.37,
+Sn5,219.21,600.65,Aries alpha Ari
+Sn6,302.16,491.03,Hyades theta Tau
+Sn7,319.82,699.82,Hyades delta Tau
+Sn8,330.89,340.01,Venus (bright body)
+Sn9,379.98,681.08,
+Sn10,564.21,666.41,Hyades gamma Tau / Aries beta Ari
+Sn11,654.54,557.94,Aries gamma Ari
