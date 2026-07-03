@@ -4,15 +4,15 @@ plus the physical direction constraint (pillar C).
 
 These are exhaustive and deterministic (no random seed needed).
 
-B1  Label permutation. Fix the five selected points {S2,S3,S6,S7,S10} and try all
+B1  Label permutation. Fix the five selected points {Sn2,Sn3,Sn6,Sn7,Sn10} and try all
     5! = 120 ways of assigning the Hyades skeleton labels (eps, alpha, theta,
     delta, gamma Tau). The anatomically correct labelling should give the unique
     minimum rho_CS  ->  p ~ 1/120 ~ 0.008.
 
 B2  Subset enumeration. Try all C(11,5) = 462 ways of choosing five of the eleven
     measured points, each fitted with its best-of-120 labelling. The pre-specified
-    subset {S2,S3,S6,S7,S10} should rank first, with no better subset, and the
-    winner should NOT contain S8 (Venus) -> the five-point choice is not post-hoc.
+    subset {Sn2,Sn3,Sn6,Sn7,Sn10} should rank first, with no better subset, and the
+    winner should NOT contain Sn8 (Venus) -> the five-point choice is not post-hoc.
 
 C   Direction constraint. A single instant of sky shares one tilt, so a physical
     match must align near the painting's orientation. Restricting to fits with
@@ -27,7 +27,7 @@ import numpy as np
 from procrustes import procrustes, build_fit, load_canvas_mean, load_sky
 
 HYADES_ORDER = ["eps Tau", "alpha Tau", "theta Tau", "delta Tau", "gamma Tau"]
-SELECTED = ["S2", "S3", "S6", "S7", "S10"]   # pre-specified five points (anatomical order)
+SELECTED = ["Sn2", "Sn3", "Sn6", "Sn7", "Sn10"]   # pre-specified five points (anatomical order)
 THETA_REF = 46.5                              # painting orientation (deg)
 GATE = 20.0                                   # allowed deviation (deg)
 
@@ -65,7 +65,7 @@ def b2_subset_enumeration():
     rank = [c for _, c in results].index(target) + 1
     best_rho, best_combo = results[0]
     best_ids = [ids[i] for i in best_combo]
-    return rank, best_rho, best_ids, ("S8" in best_ids)
+    return rank, best_rho, best_ids, ("Sn8" in best_ids)
 
 
 def c_direction_constraint():
@@ -91,7 +91,7 @@ def run():
           f"  anatomical rho_CS={anat:.2f}%  rank={rank}/120  p={p:.3f}  min={mn:.2f}%")
     rank, best, ids, has8 = b2_subset_enumeration()
     print("B2 subset enumeration (462):"
-          f"  best={best:.2f}% {ids}  contains S8(Venus)={has8}  our-subset rank={rank}/462")
+          f"  best={best:.2f}% {ids}  contains Sn8(Venus)={has8}  our-subset rank={rank}/462")
     top = c_direction_constraint()
     print("C  direction gate |theta-46.5|<=20:"
           f"  1st {top[0][0]:.2f}% {list(top[0][1])} ;  2nd {top[1][0]:.2f}% {list(top[1][1])}")

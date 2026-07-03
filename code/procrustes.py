@@ -129,4 +129,8 @@ if __name__ == "__main__":
     _, T = build_fit("F612_Hyades")
     r = procrustes(X, T)
     print(f"{'F1540_Hyades':14s} k={len(X)}  rho_CS={r['rho_CS']:.2f}%  "
-          f"rho_max={r['rho_max']:.2f}%  CS={r['CS']:.2f}")
+          f"rho_max={r['rho_max']:.2f}%  theta={r['theta_deg']:.2f}  CS={r['CS']:.2f}")
+    print("\n(This module demonstrates the engine on the three correspondence-based "
+          "fits.\n The Rhone and Cafe benchmarks are in benchmark_fits.py, and the full "
+          "set of\n five fits, the Monte Carlo and permutation null tests, and the "
+          "validation\n checks are produced by reproduce_all.py.)")

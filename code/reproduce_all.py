@@ -27,34 +27,40 @@ def section(title):
 def main(n_mc=mc.N_DEFAULT):
     checks = []
 
-    section("1. Procrustes shape fits (Tables S1-S4)")
+    section("1. Procrustes shape fits (correspondence-based: Hyades, F1540, Aries)")
+    # Order: Hyades, then F1540 replica, with reference-only Aries last.
     fits = {}
-    for label, fit in (("F612 Hyades (k=5)", "F612_Hyades"),
-                       ("F612 Aries  (k=3)", "F612_Aries")):
-        X, T = build_fit(fit)
-        r = procrustes(X, T)
-        fits[fit] = r
-        print(f"  {label:20s} rho_CS={r['rho_CS']:6.2f}%  rho_max={r['rho_max']:6.2f}%  "
-              f"theta={r['theta_deg']:6.2f}  CS={r['CS']:.2f}")
-    rep = procrustes(load_replica_F1540(), build_fit("F612_Hyades")[1])
+    X, T = build_fit("F612_Hyades")
+    fits["F612_Hyades"] = procrustes(X, T)
+    print(f"  {'F612 Hyades (k=5)':20s} rho_CS={fits['F612_Hyades']['rho_CS']:6.2f}%  "
+          f"rho_max={fits['F612_Hyades']['rho_max']:6.2f}%  "
+          f"theta={fits['F612_Hyades']['theta_deg']:6.2f}  CS={fits['F612_Hyades']['CS']:.2f}")
+    rep = procrustes(load_replica_F1540(), T)
     print(f"  {'F1540 replica (k=5)':20s} rho_CS={rep['rho_CS']:6.2f}%  "
           f"rho_max={rep['rho_max']:6.2f}%  CS={rep['CS']:.2f}")
+    Xa, Ta = build_fit("F612_Aries")
+    fits["F612_Aries"] = procrustes(Xa, Ta)
+    print(f"  {'F612 Aries (k=3)':20s} rho_CS={fits['F612_Aries']['rho_CS']:6.2f}%  "
+          f"rho_max={fits['F612_Aries']['rho_max']:6.2f}%  "
+          f"theta={fits['F612_Aries']['theta_deg']:6.2f}  CS={fits['F612_Aries']['CS']:.2f}  (reference-only)")
     checks += [("Hyades rho_CS = 8.17%", abs(fits["F612_Hyades"]["rho_CS"] - 8.17) < 0.01),
-               ("Aries  rho_CS = 5.36%", abs(fits["F612_Aries"]["rho_CS"] - 5.36) < 0.01),
-               ("F1540  rho_CS = 6.62%", abs(rep["rho_CS"] - 6.62) < 0.01)]
+               ("F1540  rho_CS = 6.62%", abs(rep["rho_CS"] - 6.62) < 0.01),
+               ("Aries  rho_CS = 5.36%", abs(fits["F612_Aries"]["rho_CS"] - 5.36) < 0.01)]
 
-    section(f"2. Method-validation benchmark fits (N={n_mc:,})")
+    section(f"2. Benchmark fits: 1888 validation + Millet transferability (N={n_mc:,})")
     bres = bench.run(n_mc)
-    checks += [("Rhone (Big Dipper) rho_CS = 6.54%", abs(bres["Rhone (Big Dipper)"][0] - 6.54) < 0.01),
+    checks += [("Millet (Winter ast.) rho_CS = 3.85%", abs(bres["Millet (Winter ast.)"][0] - 3.85) < 0.01),
+               ("Rhone (Big Dipper)  rho_CS = 6.54%", abs(bres["Rhone (Big Dipper)"][0] - 6.54) < 0.01),
                ("Cafe  (Summer Tri.) rho_CS = 5.46%", abs(bres["Cafe (Summer Tri.)"][0] - 5.46) < 0.01),
-               ("Rhone MC p < 1e-4", bres["Rhone (Big Dipper)"][1] < 1e-4),
-               ("Cafe  MC p < 1e-4", bres["Cafe (Summer Tri.)"][1] < 1e-4)]
+               ("Millet MC p < 1e-4", bres["Millet (Winter ast.)"][1] < 1e-4),
+               ("Rhone  MC p < 1e-4", bres["Rhone (Big Dipper)"][1] < 1e-4),
+               ("Cafe   MC p < 1e-4", bres["Cafe (Summer Tri.)"][1] < 1e-4)]
 
     section(f"3. Monte Carlo random-placement null, target asterisms (N={n_mc:,})")
     mcres = mc.run(n_mc)
     checks += [("Hyades MC p < 1e-3", mcres["F612 Hyades"][0] < 1e-3),
-               ("Aries  MC p ~ 0.01 (0.005-0.02)", 0.005 < mcres["F612 Aries"][0] < 0.02),
                ("F1540  MC p < 1e-4", mcres["F1540 replica"][0] < 1e-4),
+               ("Aries  MC p ~ 0.01 (0.005-0.02)", 0.005 < mcres["F612 Aries"][0] < 0.02),
                ("k=5 null median ~ 40%", abs(mcres["F612 Hyades"][1] - 40) < 3)]
 
     section("4. Permutation and direction tests")
@@ -64,8 +70,8 @@ def main(n_mc=mc.N_DEFAULT):
     cdir = perm.c_direction_constraint()
     checks += [("B1 anatomical labelling rank 1/120", b1_rank == 1),
                ("B2 our subset rank 1/462", b2_rank == 1),
-               ("B2 winner excludes S8 (Venus)", not b2_has8),
-               ("C  Hyades first under direction gate", cdir[0][1] == ("S2", "S3", "S6", "S7", "S10"))]
+               ("B2 winner excludes Sn8 (Venus)", not b2_has8),
+               ("C  Hyades first under direction gate", cdir[0][1] == ("Sn2", "Sn3", "Sn6", "Sn7", "Sn10"))]
 
     section("Validation summary")
     ok = True

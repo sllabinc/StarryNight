@@ -52,13 +52,15 @@ def _fmt_p(p, n):
 def run(n: int = N_DEFAULT):
     print(f"Monte Carlo random-placement null  (N = {n:,}, seed = {SEED})")
     print(f"{'fit':16s}{'k':>3s}{'rho_obs':>9s}{'p':>11s}{'median':>9s}{'5th pct':>9s}")
+    # Order follows the manuscript (Table S7): Hyades, then the F1540 replica,
+    # with the reference-only Aries fit last.
     cases = []
     Xh, Th = build_fit("F612_Hyades")
     cases.append(("F612 Hyades", Th, 5, procrustes(Xh, Th)["rho_CS"]))
-    Xa, Ta = build_fit("F612_Aries")
-    cases.append(("F612 Aries", Ta, 3, procrustes(Xa, Ta)["rho_CS"]))
     rep = load_replica_F1540()
     cases.append(("F1540 replica", Th, 5, procrustes(rep, Th)["rho_CS"]))
+    Xa, Ta = build_fit("F612_Aries")
+    cases.append(("F612 Aries", Ta, 3, procrustes(Xa, Ta)["rho_CS"]))
     out = {}
     for name, tmpl, k, obs in cases:
         p, med, p5, hits, _ = mc_null(tmpl, k, obs, n=n)

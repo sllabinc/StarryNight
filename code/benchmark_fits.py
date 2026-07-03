@@ -1,14 +1,20 @@
 """
-Method-validation benchmarks (Tables S1-S2): the two 1888 nocturnes whose
-viewpoints survive.
+Fixed-correspondence position-based fits: the two surviving 1888 Van Gogh
+nocturnes (pipeline validation) and Millet's La Nuit etoilee (transferability
+to a different artist).
 
-Each benchmark is a full, fixed-correspondence fit (every measured point used,
-in the listed order), so no point/label search is needed here -- that machinery
-applies only to the F612 Hyades fit (see permutation_tests.py). We simply
-reproduce the observed rho_CS and run the random-placement Monte Carlo null.
+Each fit is a full, fixed-correspondence fit (every measured point used, in the
+listed order), so no point/label search is needed here -- that machinery applies
+only to the F612 Hyades fit (see permutation_tests.py). We simply reproduce the
+observed rho_CS and run the random-placement Monte Carlo null.
 
-  Big Dipper  (The Starry Night over the Rhône) : k = 7, rho_CS = 6.54 %
-  Summer Triangle + b/d Cyg (Cafe Terrace)      : k = 5, rho_CS = 5.46 %
+Listed in manuscript (chronological) order:
+    Winter asterism, Orion & Canis Major (Millet, ~1850-65) : k = 8, rho_CS = 3.85 %  [transferability]
+    Big Dipper  (The Starry Night over the Rhône, 1888)     : k = 7, rho_CS = 6.54 %  [validation]
+    Summer Triangle + b/d Cyg (Cafe Terrace, 1888)          : k = 5, rho_CS = 5.46 %  [validation]
+
+The Millet fit uses star positions only (no FOV reconstruction), showing the
+shape-matching step transfers to another artist's work.
 
 Author: Elijah J. H. Kim. MIT License.
 """
@@ -33,9 +39,12 @@ def _load_benchmark(name):
     return np.array(canvas), np.array(sky)
 
 
+# Order follows the manuscript (Table 1 / Table S7): transferability first,
+# then the two 1888 validation nocturnes.
 BENCHMARKS = {
-    "Rhone (Big Dipper)": ("benchmark_rhone.csv", 7, 6.54),
-    "Cafe (Summer Tri.)": ("benchmark_cafe.csv", 5, 5.46),
+    "Millet (Winter ast.)": ("benchmark_millet.csv", 8, 3.85), # transferability
+    "Rhone (Big Dipper)":  ("benchmark_rhone.csv", 7, 6.54),   # validation, VG 1888
+    "Cafe (Summer Tri.)":  ("benchmark_cafe.csv", 5, 5.46),    # validation, VG 1888
 }
 
 
